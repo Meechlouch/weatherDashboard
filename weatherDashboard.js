@@ -50,15 +50,18 @@ $(document).ready(function() {
     function  displayHistory() {
         
         let liEl = $("<li>");
+        liEl.addClass("list-group-item");
         city = $("#city").val();
-        $("#searchHistory").append(liEl);
-        liEl.append(inputEl);
+        liEl.append(city);
+        $("#searchHistory").prepend(liEl);
+        
         //inputEl.html(city);
-        inputEl.html(city);
+        //inputEl.html(city);
         console.log(city);
         //$("#searchHistory").prepend(liEl);
     }
 
+ 
     /*
 
     let fiveDayApiCall = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + apiKey;
