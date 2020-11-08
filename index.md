@@ -1,0 +1,1 @@
+index.md file for weather dashboard
