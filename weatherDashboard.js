@@ -13,9 +13,9 @@ $(document).ready(function() {
 
     
       
-      //event listener targets named Id on the click of a li element
+    //event listener targets named Id on the click of a li element
     $("#searchHistory").on("click", "li", function() {
-        
+        $("#fiveDayForecast").empty();
         city = $(this).text();
         getTodayWeather(city);
         fiveDayForecast();
@@ -24,7 +24,6 @@ $(document).ready(function() {
     $("#searchCities").on("click", function() {
         $("#fiveDayForecast").empty();
         city = $("#city").val().trim();
-       
 
         if(city != "") {
         
@@ -87,7 +86,7 @@ $(document).ready(function() {
     function  displayHistory(city) {
         let num = 9;
         let liEl = $("<li>");
-        liEl.addClass("list-group-item");
+        liEl.addClass("list-group-item genHistory");
         liEl.append(city);
         $("#searchHistory").prepend(liEl); 
 
@@ -105,27 +104,32 @@ $(document).ready(function() {
             url: fiveDay,
             type: "GET",
         }).then(function(response) {
-           //console.log(response);
+           console.log(response);
            // console.log("apiCall five Day");
             //let dt = data.list[0].dt;
             //(moment.unix(dt));
             
-                let momentJS = moment().format("response.daily[i].dt");
+            
                 
                 //divEl.setAttribute("style", "width: 10px;");
                 for (let i = 0; i < 5; i++) {
                     let divEl = $("<div>");
                     let fiveTemp = response.daily[i].temp.day;
                     let fiveHumid = response.daily[i].humidity;
+                    let unixDate = response.daily[i].dt;
+                    let date = moment.unix(unixDate);
 
+                    //let momentJS = moment().format(fiveDate);
                     let fiveTempPara = $("<p>").text("Temp: " + fiveTemp.toFixed(1));
                     let fiveHumidPara = $("<p>").text("Humidity: " + fiveHumid);
+                    let fiveDatePara = $("<p>").text(date);
                     let icon = $("<img>");
                     let weatherCode = response.daily[i].weather[0].icon;
                     let apiWeatherIcon = "https://openweathermap.org/img/w/" + weatherCode + ".png";
 
-                    divEl.addClass("card");
+                    divEl.addClass("card genCards");
                     icon.attr("src", apiWeatherIcon);
+                    divEl.append(fiveDatePara);
                     divEl.append(icon);
                     divEl.append(fiveTempPara);
                     divEl.append(fiveHumidPara);
