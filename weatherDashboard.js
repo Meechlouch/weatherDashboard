@@ -103,9 +103,13 @@ $(document).ready(function() {
 
                     let fiveTempPara = $("<p>").text("Temp: " + fiveTemp.toFixed(1));
                     let fiveHumidPara = $("<p>").text("Humidity: " + fiveHumid);
-
+                    let icon = $("<img>");
+                    let weatherCode = response.daily[i].weather[0].icon;
+                    let apiWeatherIcon = "https://openweathermap.org/img/w/" + weatherCode + ".png";
 
                     divEl.addClass("card");
+                    icon.attr("src", apiWeatherIcon);
+                    divEl.append(icon);
                     divEl.append(fiveTempPara);
                     divEl.append(fiveHumidPara);
                     console.log(response.daily[i].temp.day);
