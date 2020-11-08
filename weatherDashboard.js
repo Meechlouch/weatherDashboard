@@ -1,24 +1,31 @@
+//Set Global Variables
 let apiKey = "9ee1e37fcd420a11ca0592d62f5fa2ce";
 let city = "";
-
+//document function make sures document is loaded first
 $(document).ready(function() {
+    //grabs searched cities from local storage or an empty if there is no search history
     let history = JSON.parse(window.localStorage.getItem("history")) || [];
+    //iterate through local storage history
     for (let i = 0; i < history.length; i++) {
-        displayHistory(history[i]);
-        if (history.length > 9) {
-            //console.log(history.shift());
-            history.shift();
+        //passing the history data of local storage to a function named display History
+        if (history < 2) {
+            alert("You need to remove this");
         }
-      }
+        displayHistory(history[i]);
+    }
 
-      $("#searchHistory").on("click", "li", function() {
-          city = $(this).text();
+    
+      
+      //event listener targets named Id on the click of a li element
+    $("#searchHistory").on("click", "li", function() {
+        
+        city = $(this).text();
         getTodayWeather(city);
         fiveDayForecast();
       });
     
     $("#searchCities").on("click", function() {
-    
+        $("#fiveDayForecast").empty();
         city = $("#city").val().trim();
        
 
@@ -34,7 +41,7 @@ $(document).ready(function() {
               }
 
         } else {
-            console.log("input empty");
+          //  console.log("input empty");
         }
 
     });
@@ -80,6 +87,19 @@ $(document).ready(function() {
         return  `<h4><strong>${response.name}</strong></h4>${momentJS}<img src='http://openweathermap.org/img/wn/${response.weather[0].icon}.png'><br>Temperature: ${response.main.temp.toFixed(1)} &deg;F</br>Humidity: ${response.main.humidity}%<br>Wind Speed: ${response.wind.speed} MPH<br>UV Index: <span class='${color}'>${uvValue}</span> `
     }
 
+    function  displayHistory(city) {
+        let num = 9;
+        let liEl = $("<li>");
+        liEl.addClass("list-group-item");
+        liEl.append(city);
+        $("#searchHistory").prepend(liEl); 
+
+        if(city > num) {
+            $(".list-group-item").remove();
+        }
+    }
+
+
     function fiveDayForecast(lat, lon) {
         
         let fiveDay = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial" + "&appid=" + apiKey;
@@ -88,12 +108,12 @@ $(document).ready(function() {
             url: fiveDay,
             type: "GET",
         }).then(function(response) {
-           console.log(response);
+           //console.log(response);
            // console.log("apiCall five Day");
             //let dt = data.list[0].dt;
             //(moment.unix(dt));
             
-                //let momentJS = moment().format("MMM Do YY");
+                let momentJS = moment().format("response.daily[i].dt");
                 
                 //divEl.setAttribute("style", "width: 10px;");
                 for (let i = 0; i < 5; i++) {
@@ -112,18 +132,14 @@ $(document).ready(function() {
                     divEl.append(icon);
                     divEl.append(fiveTempPara);
                     divEl.append(fiveHumidPara);
-                    console.log(response.daily[i].temp.day);
-                    console.log("full object");
+                    //console.log(response.daily[i].temp.day);
+                   // console.log("full object");
                     $("#fiveDayForecast").append(divEl);
                 }
-           
         });
     }
-
-    function  displayHistory(city) {
-        let liEl = $("<li>");
-        liEl.addClass("list-group-item");
-        liEl.append(city);
-        $("#searchHistory").prepend(liEl); 
-    }
 });
+    
+
+
+//let fiveDate = moment.unix(response.daily[i].dt).format('l');

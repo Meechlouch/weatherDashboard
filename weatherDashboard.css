@@ -1,3 +1,11 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
 body {
-    background-image: "https://weloveweather.tv/wp-content/uploads/2020/03/Top10FI031820-994x441.jpg";
+    background-image: url("https://media.istockphoto.com/photos/clouds-and-bright-blue-sky-background-panoramic-angle-view-picture-id1026330454?k=6&m=1026330454&s=612x612&w=0&h=14tGPeQ0xZU-AIXgWxfpa0NETPvsSPDzM3zRvOvUXB0=");
+    background-size: cover;
+    color: black;
 }
