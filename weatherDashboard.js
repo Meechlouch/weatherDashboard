@@ -8,9 +8,6 @@ $(document).ready(function() {
     //iterate through local storage history
     for (let i = 0; i < history.length; i++) {
         //passing the history data of local storage to a function named display History
-        if (history < 2) {
-            alert("You need to remove this");
-        }
         displayHistory(history[i]);
     }
 
