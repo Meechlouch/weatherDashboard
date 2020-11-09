@@ -1,10 +1,10 @@
 # weatherDashboard
 
 ### Gallery
-​
+
 #### Desktop:
 ![Desktop View](weatherDashboard/Remote-Repo/img/Screenshot(3).png "Desktop view")
-​
+
 #### Mobile:
 ![Mobile View](img/Screenshot(4).png)
 
@@ -22,3 +22,10 @@ are interactive and will allow the user to quickly look up the weather informati
 A lot of data information used to make this app necessary came from the Open Weather Map API, retrieving the data necessary to get various information such as: Temp, Humidity, Image Icon, etc. took a lot of manipulation and passing through various functions. Multiple ajax calls were necessary and data from those API calls was to be manipulated in order to pass on to another API call.
 With further development in mind, I will be aiming to remove the initial search history card (which should be at the bottom of the list) from generated list after a certain number of cards have been generated then applying the newly searched history card to the top of listed cards.
 
+## Tech and Features Used
+
+* Bootstrap
+* Javascript
+* JQuery
+* Open Weather API
+* Postman
