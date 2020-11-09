@@ -30,7 +30,7 @@
                                 </svg>
                             </button>
                     </div>
-                    <ul id="searchHistory" class="list-group list-group-flush genHistory" style="margin-top: 20px;">
+                    <ul id="searchHistory" class="list-group list-group-flush" style="margin-top: 20px;">
                         
                     </ul>
                 </div>
@@ -41,7 +41,7 @@
                     </div>
     
                     <div class="jumbotron bg-transparent" style="padding-top: 1.5rem; padding-bottom: 1.5rem;">
-                        <div class="row genCards" id="fiveDayForecast">
+                        <div class="row" id="fiveDayForecast">
                             
                         </div>
 
@@ -53,3 +53,4 @@
         <script src="weatherDashboard.js"></script>    
     </body>
 </html>
+    

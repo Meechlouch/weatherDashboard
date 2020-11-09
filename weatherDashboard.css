@@ -13,9 +13,9 @@ body {
 
 .genCards {
     opacity: 0.8;
-    padding: 5%;
-    margin-right: auto;
-    color: black;
+    padding: 10px;
+    margin: auto;
+    margin-bottom: 20px;
 }
 
 .genHistory {

@@ -112,12 +112,12 @@ $(document).ready(function() {
             
                 
                 //divEl.setAttribute("style", "width: 10px;");
-                for (let i = 0; i < 5; i++) {
+                for (let i = 1; i < 6; i++) {
                     let divEl = $("<div>");
                     let fiveTemp = response.daily[i].temp.day;
                     let fiveHumid = response.daily[i].humidity;
                     let unixDate = response.daily[i].dt;
-                    let date = moment.unix(unixDate);
+                    let date = moment.unix(unixDate).format('LL');
 
                     //let momentJS = moment().format(fiveDate);
                     let fiveTempPara = $("<p>").text("Temp: " + fiveTemp.toFixed(1));
