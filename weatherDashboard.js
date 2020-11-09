@@ -10,59 +10,62 @@ $(document).ready(function() {
         //passing the history data of local storage to a function named display History
         displayHistory(history[i]);
     }
-
-    
-      
     //event listener targets named Id on the click of a li element
     $("#searchHistory").on("click", "li", function() {
+        //five day forecast is emptied for every click of the list
         $("#fiveDayForecast").empty();
+        //this function targets the value of any city clicked
         city = $(this).text();
+        //the value of that clicked city is passed into a function
         getTodayWeather(city);
+        //a function is then called to get the 5 day forecast for that city
         fiveDayForecast();
       });
-    
+    //event listener targets the user input value on every click
     $("#searchCities").on("click", function() {
+        //five day forecast element is deleted after every click
         $("#fiveDayForecast").empty();
+        //useer input is stored in a variable
         city = $("#city").val().trim();
-
+        //conditional statement checks to be sure a val is entered
         if(city != "") {
-        
+            //if there is a value, we pass that value into a function that get the current weather
             getTodayWeather(city);
-
+            //condition statement checks to see that value is in history
             if (history.indexOf(city) === -1) {
+                //if not, we push that value to local storage
                 history.push(city);
                 window.localStorage.setItem("history", JSON.stringify(history));
-          
+                //the value is then passed to another function that dispays it to history section
                 displayHistory(city);
-              }
-
-        } else {
-          //  console.log("input empty");
+            }
         }
-
     });
-
+    
     function getTodayWeather(city){
-        let currentWeather = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial" + "&appid=" + apiKey;
+        //Url saved in a variable
+        let currentWeatherUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial" + "&appid=" + apiKey;
+        //plug variable in for ajax call
         $.ajax({
-            url: currentWeather,
+            url: currentWeatherUrl,
             type: "GET",
         }).then(function(response) {
-            //console.log(response);
-           // console.log("This apiCall gives current weather for city input value");
-            getUV(response.coord.lat, response.coord.lon, response)
-            
+            //we pass in values from ajax response to a function that will use that value to get UV index
+            getUV(response.coord.lat, response.coord.lon, response);
         });
     }
-
+    //value passed into parameters of function
     function getUV(lat, lon, weatherData){
+
         let uvIndexUrl = `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${apiKey}`
+        //ajax call
         $.ajax({
             url: uvIndexUrl,
             type: "GET",
+        //we pass in UV from API response
         }).then(function(uvResp) {
-            //console.log(uvResp);
-            //console.log("this apiCall gives lat and lon");
+            
+            
             let displayContent = show(weatherData,uvResp.value);
             $("#currentForecast").html(displayContent);
             fiveDayForecast(uvResp.lat, uvResp.lon); 
@@ -74,7 +77,6 @@ $(document).ready(function() {
         let color = null;
         if(uvValue < 3){
             color = 'btn btn-success';
-
         } else if(uvValue < 7){
             color = 'btn btn-warning';
         } else {
@@ -84,63 +86,44 @@ $(document).ready(function() {
     }
 
     function  displayHistory(city) {
-        let num = 9;
         let liEl = $("<li>");
         liEl.addClass("list-group-item genHistory");
         liEl.append(city);
         $("#searchHistory").prepend(liEl); 
-
-        if(city > num) {
-            $(".list-group-item").remove();
-        }
     }
 
-
     function fiveDayForecast(lat, lon) {
-        
         let fiveDay = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial" + "&appid=" + apiKey;
-        //console.log(fiveDay);
+        
         $.ajax({
             url: fiveDay,
             type: "GET",
         }).then(function(response) {
            console.log(response);
-           // console.log("apiCall five Day");
-            //let dt = data.list[0].dt;
-            //(moment.unix(dt));
-            
-            
-                
-                //divEl.setAttribute("style", "width: 10px;");
-                for (let i = 1; i < 6; i++) {
-                    let divEl = $("<div>");
-                    let fiveTemp = response.daily[i].temp.day;
-                    let fiveHumid = response.daily[i].humidity;
-                    let unixDate = response.daily[i].dt;
-                    let date = moment.unix(unixDate).format('LL');
-
-                    //let momentJS = moment().format(fiveDate);
-                    let fiveTempPara = $("<p>").text("Temp: " + fiveTemp.toFixed(1));
-                    let fiveHumidPara = $("<p>").text("Humidity: " + fiveHumid);
-                    let fiveDatePara = $("<p>").text(date);
-                    let icon = $("<img>");
-                    let weatherCode = response.daily[i].weather[0].icon;
-                    let apiWeatherIcon = "https://openweathermap.org/img/w/" + weatherCode + ".png";
-
-                    divEl.addClass("card genCards");
-                    icon.attr("src", apiWeatherIcon);
-                    divEl.append(fiveDatePara);
-                    divEl.append(icon);
-                    divEl.append(fiveTempPara);
-                    divEl.append(fiveHumidPara);
-                    //console.log(response.daily[i].temp.day);
-                   // console.log("full object");
-                    $("#fiveDayForecast").append(divEl);
-                }
+        
+            for (let i = 1; i < 6; i++) {
+                let divEl = $("<div>");
+                let fiveTemp = response.daily[i].temp.day;
+                let fiveHumid = response.daily[i].humidity;
+                let unixDate = response.daily[i].dt;
+                let date = moment.unix(unixDate).format('LL');
+                let fiveTempPara = $("<p>").text("Temp: " + fiveTemp.toFixed(1));
+                let fiveHumidPara = $("<p>").text("Humidity: " + fiveHumid);
+                let fiveDatePara = $("<p>").text(date);
+                let icon = $("<img>");
+                let weatherCode = response.daily[i].weather[0].icon;
+                let apiWeatherIcon = "https://openweathermap.org/img/w/" + weatherCode + ".png";
+                divEl.addClass("card genCards");
+                icon.attr("src", apiWeatherIcon);
+                divEl.append(fiveDatePara);
+                divEl.append(icon);
+                divEl.append(fiveTempPara);
+                divEl.append(fiveHumidPara);
+                $("#fiveDayForecast").append(divEl);
+            }
         });
     }
 });
     
 
 
-//let fiveDate = moment.unix(response.daily[i].dt).format('l');

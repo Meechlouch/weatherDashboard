@@ -19,7 +19,7 @@
                 <!---->
       <section class="row" style="height: 100%;">
 
-       <div  class="col-md-3 b">
+        <div  class="col-md-3 b">
           <label for="city"><h5>Search for a City:</h5></label>
             <div class="input-group">
               <input type="text" name="SearchForCity" id="city" placeholder="Search City" class="form-control" required />
@@ -48,7 +48,7 @@
         </div>
       </section>   
     </div>  
-        <script src="weatherDashboard.js"></script>    
+    <script src="weatherDashboard.js"></script>    
   </body>
 </html>
     
