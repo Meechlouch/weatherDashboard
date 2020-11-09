@@ -1,4 +1,13 @@
 # weatherDashboard
+### Gallery
+​
+#### Desktop:
+![Desktop View](Homework\weatherDashboard\img\Screenshot(3).png "Desktop view")
+​
+#### Mobile:
+![Mobile View](assets/images/weather-dashboard-mobile.png "mobile view")
+![Mobile View](assets/images/weather-dashboard-mobile-2.png "mobile view")
+
 
 ### Gallery
 ​
