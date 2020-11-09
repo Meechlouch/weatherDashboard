@@ -1,5 +1,13 @@
 # weatherDashboard
 
+### Gallery
+​
+#### Desktop:
+![Desktop View](weatherDashboard/Remote-Repo/img/Screenshot(3).png "Desktop view")
+​
+#### Mobile:
+![Mobile View](img/Screenshot(4).png)
+
 # Project Discription
 
 This is a Weather Application capable of receiving weather updates for multiple cities, states and countries using the Open Weather API.
