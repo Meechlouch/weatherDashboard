@@ -107,8 +107,8 @@ $(document).ready(function() {
                 let fiveHumid = response.daily[i].humidity;
                 let unixDate = response.daily[i].dt;
                 let date = moment.unix(unixDate).format('LL');
-                let fiveTempPara = $("<p>").text("Temp: " + fiveTemp.toFixed(1));
-                let fiveHumidPara = $("<p>").text("Humidity: " + fiveHumid);
+                let fiveTempPara = $("<p>").text("Temp: " + fiveTemp.toFixed(1) + ' \xB0F');
+                let fiveHumidPara = $("<p>").text("Humidity: " + fiveHumid + "%");
                 let fiveDatePara = $("<p>").text(date);
                 let icon = $("<img>");
                 let weatherCode = response.daily[i].weather[0].icon;
