@@ -4,10 +4,10 @@
 ### Gallery
 
 #### Desktop:
-![Desktop View](img/Screenshot%20(3).png "Desktop view")
+![Desktop View](img/Screenshot%20(22).png "Desktop view")
 
 #### Mobile:
-![Mobile View](img/Screenshot%20(4).png)
+![Mobile View](img/Screenshot%20(23).png)
 
 # Project Description
 
