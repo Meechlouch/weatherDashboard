@@ -12,13 +12,36 @@ body {
 
 
 .genCards {
-    opacity: 0.8;
+    opacity: 0.6;
     padding: 10px;
     margin: auto;
     margin-bottom: 20px;
 }
 
 .genHistory {
+    opacity: 0.6;
+}
+
+#clearLink {
+    font-weight: bolder;
+    text-decoration: none;
+    font-style: italic;
+}
+
+#clearLink:hover {
+    background: none;
+    color: whitesmoke;
     opacity: 0.8;
 }
 
+.shiftRight {
+    position: relative;
+    right: -250px;
+    margin-top: 10px;
+}
+
+#searchCities:hover {
+    background: none;
+    color: whitesmoke;
+    opacity: 0.8;
+}
