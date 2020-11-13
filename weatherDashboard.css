@@ -45,3 +45,9 @@ body {
     color: whitesmoke;
     opacity: 0.8;
 }
+
+h1 {
+    background: none;
+    color: whitesmoke;
+    opacity: 0.5;
+}
