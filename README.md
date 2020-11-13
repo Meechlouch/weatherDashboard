@@ -4,10 +4,10 @@
 ### Gallery
 
 #### Desktop:
-![Desktop View](weatherDashboard/img/Screenshot(3).png "Desktop view")
+![Desktop View](weatherDashboard/img/Screenshot%20(3).png "Desktop view")
 
 #### Mobile:
-![Mobile View](weatherDashboard/img/Screenshot(4).png)
+![Mobile View](weatherDashboard/img/Screenshot%20(4).png)
 
 # Project Description
 
