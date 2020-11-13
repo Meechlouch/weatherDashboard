@@ -9,7 +9,7 @@
 #### Mobile:
 ![Mobile View](img/Screenshot(4).png)
 
-# Project Discription
+# Project Description
 
 This is a Weather Application capable of receiving weather updates for multiple cities, states and countries using the Open Weather API.
 Users will search for a city by name and on the click of the search button will be presented with The Current Date and The Current Weather Conditions: Temp, Humidity, Wind Speed, and UV Index which is color coordinated indicating the level of UV intensity. 
