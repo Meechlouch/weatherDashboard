@@ -29,4 +29,4 @@ With further development in mind, I will be aiming to remove the initial search 
 * Javascript
 * JQuery
 * Open Weather API
-* Postman
+* CSS
