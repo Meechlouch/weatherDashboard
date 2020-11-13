@@ -4,12 +4,12 @@
 ### Gallery
 
 #### Desktop:
-![Desktop View](weatherDashboard/Remote-Repo/img/Screenshot(3).png "Desktop view")
+![Desktop View](img/Screenshot%20(3).png "Desktop view")
 
 #### Mobile:
-![Mobile View](img/Screenshot(4).png)
+![Mobile View](img/Screenshot%20(4).png)
 
-# Project Discription
+# Project Description
 
 This is a Weather Application capable of receiving weather updates for multiple cities, states and countries using the Open Weather API.
 Users will search for a city by name and on the click of the search button will be presented with The Current Date and The Current Weather Conditions: Temp, Humidity, Wind Speed, and UV Index which is color coordinated indicating the level of UV intensity. 
@@ -29,4 +29,4 @@ With further development in mind, I will be aiming to remove the initial search 
 * Javascript
 * JQuery
 * Open Weather API
-* Postman
+* CSS
